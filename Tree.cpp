@@ -3,7 +3,7 @@
 #include <fstream>
 #include <vector>
 
-Tree::Tree(std::any rootData) : _root(new Node(std::move(rootData)))
+Tree::Tree(std::string rootData) : _root(new Node(std::move(rootData)))
 {}
 
 Tree::~Tree()
@@ -108,13 +108,13 @@ Tree* Tree::deserealisation(const std::string &fileName)
         std::vector<Node*> temp;
         temp.reserve(strs.size());
 
-        for (const auto& str : strs) {
+        for (auto& str : strs) {
             if (str == "-2" || str == "") {
                 ++count;
                 continue;
             }
 
-            auto node = new Node(str, nodes[count]);
+            auto node = new Node(std::move(str), nodes[count]);
             nodes[count]->addChild(node);
             temp.push_back(node);
         }

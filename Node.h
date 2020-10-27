@@ -7,17 +7,19 @@
 #include <exception>
 #include <deque>
 
+#include "OperationsWithAny.h"
+
 class Node;
 
 class Node
 {
 public:
     Node() = delete;
-    Node(std::any&& smthng, Node* parent = nullptr);
+    Node(std::string &&smthng, Node* parent = nullptr);
 
     ~Node();
 
-    std::string getData() const noexcept;
+    std::string getData() const;
     void addChild(Node* child) noexcept;
     auto childCount() const noexcept;
     std::deque<Node*> children() const noexcept;

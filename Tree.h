@@ -8,7 +8,7 @@ class Tree
 {
 public:
     Tree() = delete;
-    Tree(std::any rootData);
+    Tree(std::string rootData);
     ~Tree();
 
     Node* root() const noexcept;
